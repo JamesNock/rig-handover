@@ -15,8 +15,9 @@ Read first: `docs/vision.md`, `docs/styleguide.md`. Decisions: `docs/adr/`.
 1. A feature starts as a plan: `plan.md` at the root (one at a time). Finished plans live in
    `docs/plans/done/`.
 2. The plan is split into GitHub issues: skill `plan-to-issues` (`.agents/skills/`). A human
-   reviews the split before anything is published. GitHub issues out of reach: files in
-   `docs/issues/` (ADR 0004).
+   reviews the split before anything is published. Every issue carries the shape written in
+   that skill ("Issue shape"): a `Source: plan.md § <n>` first line and the `plan:<plan>` label.
+   GitHub issues out of reach: files in `docs/issues/` (ADR 0004).
 3. Issues are worked by workers, one issue per worker, each on its own branch or worktree.
    Pick the model per issue: the strongest for logic, a cheaper one for views and tests.
 4. A worker closes its issue with a closing comment, exactly this shape:
@@ -28,7 +29,9 @@ Read first: `docs/vision.md`, `docs/styleguide.md`. Decisions: `docs/adr/`.
    ```
 
 5. An issue is closed only when its "Done when" holds. If it can't hold yet, leave it open and
-   say what it waits on.
+   say what it waits on. A preview issue is done when the reviewer has looked, not when the
+   link is sent; the clean-up waits for that too.
+6. Previews go up and come down with skill `preview-upload` (ADR 0003).
 
 ## Skills
 
